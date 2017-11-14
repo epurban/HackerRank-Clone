@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/epurban/CIS-375/issues"
   },
-  "homepage": "https://github.com/epurban/CIS-375#readme"
+  "homepage": "https://github.com/epurban/CIS-375#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
 }
