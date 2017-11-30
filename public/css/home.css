@@ -1,0 +1,32 @@
+#editor {
+	position: relative;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 400px;
+	border-radius: 10px;
+	border: 1px solid #4285F4;
+}
+
+#problem {
+	border-right-style: hidden;
+	border-radius: 10px 10px 10px 10px;
+	border: 1px solid #4285F4;
+	padding: 15px;
+	width: 200px;
+	height: 400px;
+}
+
+#btnrun {
+	border-radius: 10px;
+	background-color: #FFFFFF; 
+	border: 1px solid #4285F4; 
+	position: relative; 
+	margin-right: 15px; 
+	width: 730px;
+}
+
+#output {
+	height: 150px;
+}

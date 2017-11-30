@@ -6,42 +6,10 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/home.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/ace/ace.js"></script>
-
-	<style type="text/css" media="screen">
-		#editor {
-			position: relative;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			height: 400px;
-			border-radius: 10px;
-			border: 1px solid #4285F4;
-		}
-
-		#problem {
-			border-right-style: hidden;
-			border-radius: 10px 10px 10px 10px;
-			border: 1px solid #4285F4;
-			padding: 15px;
-			width: 200px;
-			height: 100%;
-		}
-		
-		#btnrun {
-			border-radius: 10px;
-			background-color: #FFFFFF; 
-			border: 1px solid #4285F4; 
-			position: relative; 
-			margin-right: 15px; 
-			width: 730px;
-		}
-
-	</style>
-
 </head>
 
 <body>
@@ -50,7 +18,13 @@
 	  	<span class="navbar-brand mb-0 h1">
 		  <img src="images/logo.svg" width="30" height="30" alt="HelloCoding">
 		</span>
-		<img src="images/user.png" alt="Test">
+		<li class="nav-item dropdown">Hello<img src="images/user.png" alt="Test">
+			<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+			  <a class="dropdown-item" href="#">Action</a>
+			  <a class="dropdown-item" href="#">Another action</a>
+			  <a class="dropdown-item" href="#">Something else here</a>
+			</div>
+		  </li>
 	</nav>
 
 	<br />
@@ -58,17 +32,32 @@
 	<div class="container">
 		<div class="row">
 			<div id="problem" class="col-sm-4">
-				<h4>First Challenge - c++</h4>
+				<h4>First Challenge - C++</h4>
 				<p>Use a for loop to print "123454321" to the console.</p>
 			</div>
 			<div class="col-sm-8">
-				<div id="editor">
-				</div>
+				<div id="editor">#include &lt;iostream&gt;
 
+using namespace std;
+
+int main(){
+    int i;
+    cout << "hey there!";
+	return 0;
+}</div>
+				<form id="codepost" action="/compile" method="POST">
+				  <input id="code" type="hidden" name="code" value="">
+				</form>
 			</div>
 		</div>
 		<div class="row justify-content-end">
-			<button type="button" id="btnrun" class="btn">Run</button>
+			<button type="button" id="btnrun" class="btn" onclick="compileCode();">Run</button>
+		</div>
+		<h5>Output</h5>
+		<div id="output" class="card">
+		  <div class="card-block">
+			This is some text within a card block.
+		  </div>
 		</div>
 	</div>
 
@@ -76,6 +65,13 @@
 		var editor = ace.edit("editor");
 		editor.setTheme("ace/theme/tomorrow");
 		editor.getSession().setMode("ace/mode/c_cpp");
+		
+		function compileCode() {
+			var codetext = editor.getValue();
+		    document.getElementById("code").value = codetext;
+			console.log(codetext);
+		    document.getElementById("codepost").submit();
+		}
 	</script>
 
 </body>
