@@ -1,0 +1,25 @@
+{
+  "name": "coderlevel",
+  "version": "1.0.0",
+  "description": "CIS 375 Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/epurban/CIS-375.git"
+  },
+  "author": "Edward Urban",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/epurban/CIS-375/issues"
+  },
+  "homepage": "https://github.com/epurban/CIS-375#readme",
+  "dependencies": {
+    "async": "^2.6.0",
+    "express": "^4.16.2",
+    "express-generator": "^4.15.5",
+    "mongoose": "^4.10.8"
+  }
+}
