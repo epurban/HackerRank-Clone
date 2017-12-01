@@ -1,0 +1,19 @@
+{
+  "name": "index.js",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^4.12.1"
+  },
+  "dependencies": {
+    "eslint": "^4.12.1",
+    "express": "^4.16.2",
+    "express-generator": "^4.15.5"
+  },
+  "description": ""
+}
