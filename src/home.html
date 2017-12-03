@@ -8,23 +8,42 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/home.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/ace/ace.js"></script>
 </head>
 
 <body>
-	
+
+	<div class="collapse" id="navbarToggleExternalContent">
+		<div class="bg-dark p-4">
+		  <h5 class="text-white" align="right">Blackows</h4>
+		  <span class="text-muted">
+			  <p align="right">Stars: 420</p>
+			  <p align="right">Logout</p>
+		  </span>
+		</div>
+	</div>
+
 	<nav class="navbar navbar-dark bg-primary">
-	  	<span class="navbar-brand mb-0 h1">
+		<span class="navbar-brand mb-0 h1">
 		  <img src="images/logo.svg" width="30" height="30" alt="HelloCoding">
 		</span>
-		<li class="nav-item dropdown">Hello<img src="images/user.png" alt="Test">
-			<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-			  <a class="dropdown-item" href="#">Action</a>
-			  <a class="dropdown-item" href="#">Another action</a>
-			  <a class="dropdown-item" href="#">Something else here</a>
+		<div class="nav-item dropdown">
+			<a class="nav-link dropdown" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			My Account <img src="images/user.png" alt="Test">
+			</a>
+			<div class="dropdown-menu" aria-labelledby="navbarDropdown" align="left">
+			  <a class="dropdown-item"><h5>Blackows</h5></a>
+			  <div class="dropdown-divider"></div>
+			  <a class="dropdown-item">Stars: </a>
+			  <div class="dropdown-divider"></div>
+			  <a class="dropdown-item" href="#">Logout</a>
 			</div>
-		  </li>
+		  </div>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+		  <img src="images/user.png" alt="Test">
+		</button>
 	</nav>
 
 	<br />
@@ -41,8 +60,8 @@
 using namespace std;
 
 int main(){
-    int i;
-    cout << "hey there!";
+	int i;
+	cout << "hey there!";
 	return 0;
 }</div>
 				<form id="codepost" action="/compile" method="POST">
