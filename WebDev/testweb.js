@@ -7,3 +7,20 @@ mongoose.connect(mongoDB);
 var db = mongoose.connection;
 mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
+
+ db.collection('authors').count(function (err, count) {
+            if (err) throw err;
+            
+            console.log('Total Rows: ' + count);
+        });
+
+db.collection('authors').find().toArray(function(err, docs) {
+    console.log(JSON.stringify(docs));
+});
+
+db.collection('authors', function (err, collection) {
+          collection.find().toArray(function(err, items) {
+            if(err) throw err;    
+            console.log(items);            
+        });
+});
