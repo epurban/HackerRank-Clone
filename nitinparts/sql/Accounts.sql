@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `Users`
 --
 
-CREATE TABLE `Users` (
+CREATE TABLE `Accounts` (
   `usernames` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `passs` varchar(255) NOT NULL,
@@ -40,14 +40,14 @@ CREATE TABLE `Users` (
 -- Dumping data for table `Users`
 --
 
-INSERT INTO `Users` (`usernames`, `firstname`, `lastname`, `email`, `passs`, `starcount`, `currentlevel`) VALUES
-('alex2390', 'alex', 'rodriguez', 'arod@gmail.com', '', 0, 0),
-('cp2480', 'chris', 'paul', 'cp32490@gmail.com', '', 0, 0),
-('kd082490', 'kevin', 'durant', 'kd0824@gmail.com', 'venkat123', 0, 0),
-('kobebean', 'kobe', 'bryant', 'kb0824@gmail.com', '', 0, 0),
-('lebron23', 'lebron', 'james', 'lj23@gmail.com', '', 0, 0),
-('titans2490', 'titanss', 'gutta', 'titans2490@gmail.com', '', 0, 0),
-('vein2090', 'kevin', 'smith', 'keveins@gmail.com', '', 0, 0);
+INSERT INTO `Accounts` (`usernames`, `email`, `passs`, `starcount`, `currentlevel`) VALUES
+('alex2390', 'arod@gmail.com', '', 0, 0),
+('cp2480', 'cp32490@gmail.com', '', 0, 0),
+('kd082490', 'kd0824@gmail.com', 'venkat123', 0, 0),
+('kobebean', 'kb0824@gmail.com', '', 0, 0),
+('lebron23', 'lj23@gmail.com', '', 0, 0),
+('titans2490', 'titans2490@gmail.com', '', 0, 0),
+('vein2090', 'keveins@gmail.com', '', 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -56,7 +56,7 @@ INSERT INTO `Users` (`usernames`, `firstname`, `lastname`, `email`, `passs`, `st
 --
 -- Indexes for table `Users`
 --
-ALTER TABLE `Users`
+ALTER TABLE `Accounts`
   ADD PRIMARY KEY (`usernames`);
 COMMIT;
 

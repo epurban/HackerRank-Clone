@@ -19,16 +19,16 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `Accounts`
+-- Database: `HelloCoding`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `CurrentActivity`
+-- Table structure for table `Activities`
 --
 
-CREATE TABLE `CurrentActivity` (
+CREATE TABLE `Activities` (
   `level` int(11) NOT NULL,
   `Stars` int(11) NOT NULL,
   `Question` varchar(500) NOT NULL,
@@ -45,7 +45,7 @@ CREATE TABLE `CurrentActivity` (
 --
 -- Indexes for table `CurrentActivity`
 --
-ALTER TABLE `CurrentActivity`
+ALTER TABLE `Activities`
   ADD PRIMARY KEY (`level`);
 COMMIT;
 
