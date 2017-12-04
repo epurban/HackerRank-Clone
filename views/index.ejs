@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>HelloCoding</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/ace/ace.js"></script>
+
+	<style type="text/css" media="screen">
+		.jumbotron {
+			background-color: #FFFFFF;
+		}
+		.form-signin {
+		  max-width: 330px;
+		  padding: 15px;
+		  margin: 0 auto;
+		}
+		.form-register {
+		  max-width: 330px;
+		  padding: 15px;
+		  margin: 0 auto;
+		}
+		.form-signin .checkbox {
+		  margin-bottom: 10px;
+		}
+		.form-signin .checkbox {
+		  font-weight: 400;
+		}
+		.form-signin .form-control {
+		  position: relative;
+		  box-sizing: border-box;
+		  height: auto;
+		  padding: 10px;
+		  font-size: 16px;
+		}
+		.form-register .form-control {
+		  position: relative;
+		  box-sizing: border-box;
+		  height: auto;
+		  padding: 10px;
+		  font-size: 16px;
+		}
+		.form-signin .form-control:focus {
+		  z-index: 2;
+		}
+		.form-register .form-control:focus {
+		  z-index: 2;
+		}
+		.form-signin input[type="username"] {
+		  margin-bottom: -1px;
+		  border-bottom-right-radius: 0;
+		  border-bottom-left-radius: 0;
+		}
+		.form-signin input[type="password"] {
+		  margin-bottom: 10px;
+		  border-top-left-radius: 0;
+		  border-top-right-radius: 0;
+		}
+		.form-register input[type="username"] {
+		  margin-bottom: -1px;
+		  border-bottom-right-radius: 0;
+		  border-bottom-left-radius: 0;
+		}
+		.form-register input[type="email"] {
+		  border-bottom-left-radius: 0;
+		  border-bottom-right-radius: 0;
+		  border-top-left-radius: 0;
+		  border-top-right-radius: 0;
+		}
+		.form-register input[type="password"] {
+		  margin-bottom: 10px;
+		  border-bottom-left-radius: 0;
+		  border-bottom-right-radius: 0;
+		  border-top-left-radius: 0;
+		  border-top-right-radius: 0;
+		}
+		.btn {
+			background-color: #80d8ff;
+		}
+		.panel-heading a{
+			text-decoration: none;
+			color: #80d8ff;
+			font-weight: bold;
+			font-size: 15px;
+			-webkit-transition: all 0.1s linear;
+			-moz-transition: all 0.1s linear;
+			transition: all 0.1s linear;
+		}
+		.panel-heading a.active{
+			color: #FFFFFF;
+			font-size: 25px;
+		}
+	</style>
+	
+	<script type="text/javascript" charset="utf-8">
+		$(function() {
+			$('#form-signin-link').click(function(e) {
+				$("#form-signin").delay(100).fadeIn(100);
+				$("#form-register").fadeOut(100);
+				$('#form-register-link').removeClass('active');
+				$(this).addClass('active');
+				e.preventDefault();
+			});
+			$('#form-register-link').click(function(e) {
+				$("#form-register").delay(100).fadeIn(100);
+				$("#form-signin").fadeOut(100);
+				$('#form-signin-link').removeClass('active');
+				$(this).addClass('active');
+				e.preventDefault();
+			});
+		});
+	</script>
+
+</head>
+
+<body background="images/background.jpg">
+	
+	<nav class="navbar navbar-dark bg-primary">
+	  	<span class="navbar-brand mb-0 h1">
+		  <img src="images/logo.svg" width="30" height="30" alt="HelloCoding">
+		</span>
+		<img src="images/user.png" alt="Test">
+	</nav>
+
+	<div class="jumbotron text-center">
+		<h1>Hello Coding.</h1>
+		<p>Learn to Code. Level up and grow your skills.</p>
+	</div>
+	
+	<div class="container">
+
+		<div class="panel-heading">
+			<div class="row">
+				<div class="col-md-12" align="center">
+					<a href="#" class="active" id="form-signin-link">Existing Users</a>
+					<a href="#" id="form-register-link">New User</a>
+				</div>
+			</div>
+		</div>
+		
+		<form action="/login" method="post" class="form-signin" id="form-signin" style="display: block;">
+			<label for="inputUsername" class="sr-only">Username</label>
+			<input name="username" type="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+			<label for="inputPassword" class="sr-only">Password</label>
+			<input name="passs" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+			<div class="checkbox">
+			  <label style="color: #FFFFFF;">
+				<input type="checkbox" value="remember-me"> Remember me
+			  </label>
+			</div>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+		</form>
+
+		<form action="/register" method="post" class="form-register" id="form-register" style="display: none;">
+			<label for="inputUsername" class="sr-only">Username</label>
+			<input name="username" type="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+			<label for="inputEmail" class="sr-only">Email address</label>
+			<input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+			<label for="inputPassword" class="sr-only">Password</label>
+			<input name="passs" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+		</form>
+
+    </div> <!-- /container -->
+
+</body>
+
+</html>

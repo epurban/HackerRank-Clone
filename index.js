@@ -5,30 +5,35 @@ var bodyParser = require('body-parser');
 var mysql = require('mysql');
 
 // create mysql db connection
-/*var con = mysql.createConnection({
+var con = mysql.createConnection({
 	host: "localhost",
 	user: "root",
-	password: "",
-	database: "hellocoding"
-});*/
+	password: "passw0rd",
+	database: "HelloCoding"
+});
 
 // creat express server
 var app = express();
 
 app.set('title', 'HelloCoding');
 app.set('views', './views');
-app.set('view engine', 'pug');
+app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.static('src'));
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 app.get('/', function (req, res) {
-  res.render('index')
+	res.render('index');
 })
 
 app.listen(4000);
-console.log('server listening on port 4000.');
+console.log('Express Server listening on port 4000.');
+
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected to local MySQL Database succesfully.");
+});
 
 app.post('/login', function (req, res) {
 	
@@ -40,7 +45,7 @@ app.post('/login', function (req, res) {
 	con.query("select count(*) as pass FROM Users WHERE usernames = '" + username + "' and passs = '" + passcode + "';", function (err, result) {
 		if (err) throw err;
 		console.log("Login Result: " + result);
-		res.send(result);
+		res.render('home', { outputmessage: "", startingcode: "", success: false });
 	});
 	
 })
@@ -56,7 +61,7 @@ app.post('/register', function (req, res) {
 	con.query("INSERT INTO Users (usernames, email, passs) VALUES (" + username + ", " + email + ", " + passcode + ");", function (err, result) {
 		if (err) throw err;
 		console.log("Register Result: " + result);
-		res.send(result);
+		res.render('index');
 	});
 	
 })
@@ -93,9 +98,9 @@ app.post('/compile', function (req, res) {
 			execute.stdout.on('data', function (output) {
 				//console.log(String(output));
 				if (output == correctoutput) {
-					res.render('index', { outputmessage: output, startingcode: req.body.code, success: true })
+					res.render('home', { outputmessage: output, startingcode: req.body.code, success: true })
 				} else {
-					res.render('index', { outputmessage: output, startingcode: req.body.code, success: false })
+					res.render('home', { outputmessage: output, startingcode: req.body.code, success: false })
 				}
 			});
 			
