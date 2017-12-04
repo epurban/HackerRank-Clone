@@ -45,16 +45,31 @@ app.post('/login', function (req, res) {
 	con.query("select count(*) as pass FROM Accounts WHERE usernames = '" + username + "' and passs = '" + passcode + "';", function (err, rows, fields) {
 		if (err) throw err;
 		
-		console.log(rows[0].pass);
-		
+		// LOGIN ONLY IF CREDENTIALS ARE CORRECT!!!
 		if (rows[0].pass == 1) {
-			console.log("pass");
-			res.render('home', { outputmessage: "", startingcode: "", success: false });
+			
+			console.log("user logged in.");
+			
+			// Login Pass, now retrieve their level, and render the coding page with the correct activity loaded
+			con.query("select currentlevel as currentlevel FROM Accounts WHERE usernames = '" + username + "';", function (err, rows, fields) {
+				if (err) throw err;
+				
+				var currentLevel = rows[0].currentlevel;
+				console.log(currentLevel);
+				
+				con.query("SELECT * FROM Activities WHERE level = '" + currentLevel + "';", function (err, rows, fields) {
+					if (err) throw err;
+					console.log(rows);
+					//console.log(fields);
+					res.render('home', { outputmessage: "", startingcode: "", success: false });
+				});
+				
+			});
+			
 		} else {
-			console.log("fail");
+			console.log("failed login attempt.");
 			res.render('index');
 		}
-		//res.render('home', { outputmessage: "", startingcode: "", success: false });
 	});
 	
 })
@@ -67,7 +82,7 @@ app.post('/register', function (req, res) {
 	
 	console.log("username:" + username + ", pass: " + passcode + ", email:" + email);
 	
-	con.query("INSERT INTO Accounts (usernames, email, passs) VALUES ('" + username + "', '" + email + "', '" + passcode + "');", function (err, result) {
+	con.query("INSERT INTO Accounts (usernames, email, passs, currentlevel) VALUES ('" + username + "', '" + email + "', '" + passcode + "', '1');", function (err, result) {
 		if (err) throw err;
 		console.log("Register Result: " + result);
 		res.render('index');
