@@ -13,14 +13,18 @@
 	<script src="js/ace/ace.js"></script>
 </head>
 
-<body>
+<%if (success) { %>
+	<body onload="successAlert()">
+<% } else { %>
+	<body>
+<% } %>
 
 	<div class="collapse" id="navbarToggleExternalContent">
 		<div class="bg-dark p-4">
-		  <h5 class="text-white" align="right">Blackows</h4>
+		  <h5 class="text-white" align="right">Hello, <%= navUsername %>!</h5>
 		  <span class="text-muted">
-			  <p align="right">Stars: 420</p>
-			  <p align="right">Logout</p>
+			  <p align="right">Total Stars: <%= navStars %></p>
+			  <p align="right"><a href="/logout">Logout</a></p>
 		  </span>
 		</div>
 	</div>
@@ -29,18 +33,7 @@
 		<span class="navbar-brand mb-0 h1">
 		  <img src="images/logo.svg" width="30" height="30" alt="HelloCoding">
 		</span>
-		<div class="nav-item dropdown">
-			<a class="nav-link dropdown" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			My Account <img src="images/user.png" alt="Test">
-			</a>
-			<div class="dropdown-menu" aria-labelledby="navbarDropdown" align="left">
-			  <a class="dropdown-item"><h5>Blackows</h5></a>
-			  <div class="dropdown-divider"></div>
-			  <a class="dropdown-item">Stars: </a>
-			  <div class="dropdown-divider"></div>
-			  <a class="dropdown-item" href="#">Logout</a>
-			</div>
-		  </div>
+		
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
 		  <img src="images/user.png" alt="Test">
 		</button>
@@ -51,13 +44,17 @@
 	<div class="container">
 		<div class="row">
 			<div id="problem" class="col-sm-4">
-				<h4>First Challenge - C++</h4>
-				<p>Use a for loop to print "123454321" to the console.</p>
+				<h4><%= activityName %> - <%= activityStars %> Stars</h4>
+				<p><%= activityQuestion %></p>
 			</div>
 			<div class="col-sm-8">
 				<div id="editor"><p><%= startingcode %></p></div>
 				<form id="codepost" action="/compile" method="POST">
 				  <input id="code" type="hidden" name="code" value="">
+				  <input id="username" type="hidden" name="username" value=<%= navUsername %>>
+				</form>
+				<form id="nextactivity" action="/next" method="POST">
+				  <input id="username" type="hidden" name="username" value=<%= navUsername %>>
 				</form>
 			</div>
 		</div>
@@ -76,10 +73,14 @@
 		editor.setTheme("ace/theme/tomorrow");
 		editor.getSession().setMode("ace/mode/c_cpp");
 		
+		function successAlert() {
+			alert("You have successfully completed this activity!\nClick OK to continue to the next activity.");
+			document.getElementById("nextactivity").submit();
+		}
+		
 		function compileCode() {
 			var codetext = editor.getValue();
 		    document.getElementById("code").value = codetext;
-			console.log(codetext);
 		    document.getElementById("codepost").submit();
 		}
 	</script>
