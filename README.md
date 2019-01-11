@@ -1,1 +1,1 @@
-# CIS-375
+# Hello Coding. A simple HackerRank clone
